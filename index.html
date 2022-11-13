@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--Icon-->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--Title-->
+    <title>Merry Christmas</title>
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <!--Stylesheets-->
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #0f72e5;
+        }
+        
+        .popup {
+            background-color: #ffffff;
+            width: 450px;
+            padding: 30px 40px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            border-radius: 8px;
+            font-family: "Poppins", sans-serif;
+            display: none;
+            text-align: center;
+        }
+        
+        .popup button {
+            display: block;
+            margin: 0 0 20px auto;
+            background-color: transparent;
+            font-size: 30px;
+            color: #c5c5c5;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .popup p {
+            font-size: 14px;
+            text-align: justify;
+            margin: 20px 0;
+            line-height: 25px;
+        }
+        
+        a {
+            display: block;
+            width: 200px;
+            position: relative;
+            margin: 10px auto;
+            text-align: center;
+            background-color: red;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        
+        #progress {
+            background-color: ;
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+            height: 70px;
+            width: 70px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        
+        #progress-value {
+            display: block;
+            height: calc(100% - 15px);
+            width: calc(100% - 15px);
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 35px;
+            color: #001a2e;
+        }
+        
+        h1 {
+            /*background-color: #03cc65;*/
+            color: #ffffff;
+            font-size: 15vmin;
+            text-align: center;
+            padding-top: 30px;
+        }
+        
+        h3 {
+            /*background-color: #03cc65;*/
+            color: #ffffff;
+            font-size: 8vmin;
+            text-align: center;
+        }
+        
+        p {
+            font-size: 3vmin;
+            line-height: 2em;
+            letter-spacing: 0.05em;
+            text-align: justify;
+            margin: 50px 0;
+            padding: 0 30px;
+        }
+        
+        .background {
+            background-image: url("mmcc.png");
+            opacity: 0.9;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-position: 50% 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress">
+        <span id="progress-value">&#x1F815;</span>
+    </div>
+
+    <div class="background">
+
+    </div>
+
+    <div class="popup">
+        <button id="close">&times;</button>
+        <h2>Samson wish you a merry christmas</h2>
+        <p>
+            May your christmas be full of love, laughter and goodwill. Have a merry christmas and a happy new year 2023...
+        </p>
+        <a href="https://samtoch3.github.io/amazing-multicolors-fireworks/">Let's Go to a surprise</a>
+    </div>
+    <!--Script-->
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(
+                function open(event) {
+                    document.querySelector(".popup").style.display = "block";
+                },
+                1000
+            )
+        });
+
+
+        document.querySelector("#close").addEventListener("click", function() {
+            document.querySelector(".popup").style.display = "none";
+        });
+    </script>
+
+    <script>
+        let calcScrollValue = () => {
+            let scrollProgress = document.getElementById("progress");
+            let progressValue = document.getElementById("progress-value");
+            let pos = document.documentElement.scrollTop;
+            let calcHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            let scrollValue = Math.round((pos * 100) / calcHeight);
+            if (pos > 100) {
+                scrollProgress.style.display = "grid";
+            } else {
+                scrollProgress.style.display = "none";
+            }
+            scrollProgress.addEventListener("click", () => {
+                document.documentElement.scrollTop = 0;
+            });
+            scrollProgress.style.background = `conic-gradient(#03cc65 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+        };
+
+        window.onscroll = calcScrollValue;
+        window.onload = calcScrollValue;
+    </script>
+</body>
+
+</html>
